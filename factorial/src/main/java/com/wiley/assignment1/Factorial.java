@@ -3,6 +3,8 @@ package com.wiley.assignment1;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
+//Not a new code I think
+import java.util.InputMismatchException;
 
 
 public class Factorial {
@@ -34,6 +36,24 @@ public class Factorial {
 		*/
 
 		//YOUR CODE STARTS HERE
+        try
+        {
+            this.num = this.scanner.nextInt();
+            if(this.num >= 1 && this.num <= 10)
+            {
+                return this.num;
+            }
+            //For number less than 1 and greater than 10
+            this.printStream.print("Invalid entry. Please enter an integer between 1 and 10, inclusive.");
+        } catch(InputMismatchException ex){
+            //numberFormatException is for throwing exceptions for Integer.parseInt for example
+             this.printStream.print("Invalid entry. Please enter an integer between 1 and 10, inclusive.");
+             //It clears the error
+             this.scanner.nextLine();
+        }
+
+
+
 
 		return -1;
 
@@ -54,7 +74,21 @@ public class Factorial {
 		int result = 1;
 		//YOUR CODE STARTS HERE
 
- 
+
+         //bases cases are 0! and 1! is 1
+//        if(num == 0 || num == 1)
+//        {
+//            result = 1;
+//        }
+
+        /*
+        if num > 1 we multiply like a product from num up to 1
+        There's in fact another method using recursion
+         */
+        for(int i = 1; i <= num; ++i)
+        {
+            result *= i;
+        }
 
 		//YOUR CODE ENDS HERE
 		this.printStream.print("The Factorial is: " + result);		
